@@ -21,16 +21,19 @@ class App extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  // handleClick(index) {
-  //   let photos = [...this.state.photos]
-  //   let photo = {...photos[index]}
-  //   photo.liked = true 
-  //   photos[index] = photo 
-  //   this.setState({photos})
-  //   console.log(photo)
-  // }
+  handleClick(index) {
+    let photos = [...this.state.photos]
+    let photo = {...photos[index]}
+    photo.liked = true 
+    photos[index] = photo 
+    this.setState({photos})
+    console.log(photo)
+  }
 
-  handleClick() {
+  handleClick2(index) {
+    let photos = [...this.state.photos]
+    let photo = {...photos[index]}
+
     this.setState({
       liked: !this.state.liked
     })
@@ -58,22 +61,20 @@ class App extends React.Component {
             this.state.photos.map((scopeVariablePhoto, index) => {
               
               return(
-                //add title of image, date of capture, rover name, make image smaller
                 <div>
-                  <div id="container" key={scopeVariablePhoto.id}> 
+                  <div class="image-card" key={scopeVariablePhoto.id}> 
                     <div class="description">
-                      <h5>{scopeVariablePhoto.rover.name} Rover</h5>
-                      <p>{scopeVariablePhoto.camera.name}({scopeVariablePhoto.camera.full_name})</p>
+                      <p>{scopeVariablePhoto.rover.name} Rover - {scopeVariablePhoto.camera.full_name}({scopeVariablePhoto.camera.name})</p>
+                      
                       <p>Image Date: {scopeVariablePhoto.earth_date}</p>
                     </div>
                     <div class="img-container">
                       <img src={scopeVariablePhoto.img_src} alt={this.photoAlt(scopeVariablePhoto)} width="400" height="280"></img>
-                      <button className="like-btn" onClick={() => this.handleClick()}>{label}</button>
+                    
+                    <button style={scopeVariablePhoto.liked && {color: 'purple'}} onClick={() => this.handleClick(index)}>Like</button> 
+                    
+                      <button className="like-btn" onClick={() => this.handleClick2(index)}>{label}</button>
                       </div>
-                    {/* <button style={scopeVariablePhoto.liked && {color: 'purple'}} onClick={() => this.handleClick(index)}>Like</button> */}
-                    {/* <p>
-                    you {text} this. Click to toggle.
-                  </p> */}
                    
                   </div>
                 </div>

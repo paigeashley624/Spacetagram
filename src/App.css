@@ -42,3 +42,15 @@
   border-color: #718377;
   /* display: inline-block; */
 }
+
+.image-card {
+  width: 420px;
+  box-shadow: 0 4px 8px 0 rgb(189, 45, 45);
+  text-align: 40px;
+}
+
+.description {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+
+  font-size: 20px;
+}
