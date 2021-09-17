@@ -15,17 +15,25 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      photos: []
-    }
+      photos: [],
+      liked: false
+    };
+    this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick(index) {
-    let photos = [...this.state.photos]
-    let photo = {...photos[index]}
-    photo.liked = true 
-    photos[index] = photo 
-    this.setState({photos})
-    console.log(photo)
+  // handleClick(index) {
+  //   let photos = [...this.state.photos]
+  //   let photo = {...photos[index]}
+  //   photo.liked = true 
+  //   photos[index] = photo 
+  //   this.setState({photos})
+  //   console.log(photo)
+  // }
+
+  handleClick() {
+    this.setState({
+      liked: !this.state.liked
+    })
   }
 
   componentDidMount() {
@@ -40,6 +48,9 @@ class App extends React.Component {
   }
 
   render() {
+    const text = this.state.liked ? 'liked' : 'haven\'t liked;'
+    const label = this.state.liked ? 'Unlike' : "Like"
+
     return (
       <div className="App">
         <header className="App-header">
@@ -49,26 +60,27 @@ class App extends React.Component {
               return(
                 //add title of image, date of capture, rover name, make image smaller
                 <div>
-                  <div key={scopeVariablePhoto.id}> 
-                    <h3>{scopeVariablePhoto.rover.name} Rover</h3>
-                    <h4>{scopeVariablePhoto.camera.name}({scopeVariablePhoto.camera.full_name})</h4>
-                    <p>Image Date: {scopeVariablePhoto.earth_date}</p>
-                    <img src={scopeVariablePhoto.img_src} alt={this.photoAlt(scopeVariablePhoto)}></img>
-                    <button style={scopeVariablePhoto.liked && {color: 'purple'}} onClick={() => this.handleClick(index)}>Like</button>
-                    
+                  <div id="container" key={scopeVariablePhoto.id}> 
+                    <div class="description">
+                      <h5>{scopeVariablePhoto.rover.name} Rover</h5>
+                      <p>{scopeVariablePhoto.camera.name}({scopeVariablePhoto.camera.full_name})</p>
+                      <p>Image Date: {scopeVariablePhoto.earth_date}</p>
+                    </div>
+                    <div class="img-container">
+                      <img src={scopeVariablePhoto.img_src} alt={this.photoAlt(scopeVariablePhoto)} width="400" height="280"></img>
+                      <button className="like-btn" onClick={() => this.handleClick()}>{label}</button>
+                      </div>
+                    {/* <button style={scopeVariablePhoto.liked && {color: 'purple'}} onClick={() => this.handleClick(index)}>Like</button> */}
+                    {/* <p>
+                    you {text} this. Click to toggle.
+                  </p> */}
+                   
                   </div>
                 </div>
               )
             })
           }
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
+          
         </header>
       </div>
     );

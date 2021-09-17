@@ -36,3 +36,9 @@
     transform: rotate(360deg);
   }
 }
+
+.like-btn {
+  background-color: #a5da29;
+  border-color: #718377;
+  /* display: inline-block; */
+}
