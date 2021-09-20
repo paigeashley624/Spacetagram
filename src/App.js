@@ -1,21 +1,26 @@
+
 import logo from './logo.svg';
 import './App.css';
 import axios from 'axios'
 import React from 'react';
 
+console.log('REACT_APP_NASA_API_KEY')
 // fix like button 
 // style cards 
 // hide api key
 // deploy app 
 // create way for every 15-20th picture to load otherwise it looks like a lot of duplicates
-// add background image
 
 
 // const data = [
 //   {name: "Paige", age: 30},
 //   {name: "Jamie", age: 40}
 // ]
+
 const api_key = "0eaoWv5ps3d3NN1uYKFwRkRqWVTTaRLwR4E7lD0n"
+
+// const api_key = process.env.REACT_APP_API_KEY
+
 class App extends React.Component {
 
   constructor(props) {
@@ -62,11 +67,13 @@ class App extends React.Component {
 
     return (
       <div className="App">
+        <h1>Spacetagram</h1>
         <header className="App-header">
           {
             this.state.photos.map((scopeVariablePhoto, index) => {
               
               return(
+                
                 <div>
                   <div class="image-card" key={scopeVariablePhoto.id}> 
                     <div class="description">
@@ -77,7 +84,7 @@ class App extends React.Component {
                     <div class="img-container">
                       <img src={scopeVariablePhoto.img_src} alt={this.photoAlt(scopeVariablePhoto)} width="400" height="280"></img>
                     
-                    <button style={scopeVariablePhoto.liked && {color: 'purple'}} onClick={() => this.handleClick(index)}>Like</button> 
+                    {/* <button style={scopeVariablePhoto.liked && {color: 'purple'}} onClick={() => this.handleClick(index)}>Like</button>  */}
                     
                       <button className="like-btn" onClick={() => this.handleClick2(index)}>{label}</button>
                       </div>
