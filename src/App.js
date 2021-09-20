@@ -3,7 +3,13 @@ import './App.css';
 import axios from 'axios'
 import React from 'react';
 
-// need to create some way for every 15-20th picture to load otherwise it looks like a lot of duplicates
+// fix like button 
+// style cards 
+// hide api key
+// deploy app 
+// create way for every 15-20th picture to load otherwise it looks like a lot of duplicates
+// add background image
+
 
 // const data = [
 //   {name: "Paige", age: 30},
