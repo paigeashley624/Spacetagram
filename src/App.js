@@ -12,21 +12,23 @@ class App extends React.Component {
       photos: [],
       liked: false
     };
-    this.handleClick = this.handleClick.bind(this);
+    // this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick(index) {
-    let photos = [...this.state.photos]
-    let photo = {...photos[index]}
-    photo.liked = true 
-    photos[index] = photo 
-    this.setState({photos})
-    console.log(photo)
-  }
+//alternative button option: 
+  // handleClick(index) {
+  //   let photos = [...this.state.photos]
+  //   let photo = {...photos[index]}
+  //   photo.liked = true 
+  //   photos[index] = photo 
+  //   this.setState({photos})
+
+  //   console.log(photo)
+  // }
 
   handleClick2(index) {
-    let photos = [...this.state.photos]
-    let photo = {...photos[index]}
+    // let photos = [...this.state.photos]
+    // let photo = {...photos[index]}
 
     this.setState({
       liked: !this.state.liked
