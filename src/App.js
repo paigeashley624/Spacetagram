@@ -4,6 +4,11 @@ import './App.css';
 import axios from 'axios'
 import React from 'react';
 
+
+
+const api_key = "0eaoWv5ps3d3NN1uYKFwRkRqWVTTaRLwR4E7lD0n"
+
+
 class App extends React.Component {
 
   constructor(props) {
@@ -12,23 +17,21 @@ class App extends React.Component {
       photos: [],
       liked: false
     };
-    // this.handleClick = this.handleClick.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
-//alternative button option: 
-  // handleClick(index) {
-  //   let photos = [...this.state.photos]
-  //   let photo = {...photos[index]}
-  //   photo.liked = true 
-  //   photos[index] = photo 
-  //   this.setState({photos})
-
-  //   console.log(photo)
-  // }
+  handleClick(index) {
+    let photos = [...this.state.photos]
+    let photo = {...photos[index]}
+    photo.liked = true 
+    photos[index] = photo 
+    this.setState({photos})
+    console.log(photo)
+  }
 
   handleClick2(index) {
-    // let photos = [...this.state.photos]
-    // let photo = {...photos[index]}
+    let photos = [...this.state.photos]
+    let photo = {...photos[index]}
 
     this.setState({
       liked: !this.state.liked
@@ -36,7 +39,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=${process.env.REACT_APP_API_KEY}`).then((response) => {
+    axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=${api_key}`).then((response) => {
       // console.log(response) 
       this.setState({photos: response.data.photos})
     })
