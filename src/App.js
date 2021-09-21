@@ -4,23 +4,6 @@ import './App.css';
 import axios from 'axios'
 import React from 'react';
 
-console.log('REACT_APP_NASA_API_KEY')
-// fix like button 
-// style cards 
-// hide api key
-
-// create way for every 15-20th picture to load otherwise it looks like a lot of duplicates
-
-
-// const data = [
-//   {name: "Paige", age: 30},
-//   {name: "Jamie", age: 40}
-// ]
-
-const api_key = "0eaoWv5ps3d3NN1uYKFwRkRqWVTTaRLwR4E7lD0n"
-
-// const api_key = process.env.REACT_APP_API_KEY
-
 class App extends React.Component {
 
   constructor(props) {
@@ -51,7 +34,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=${api_key}`).then((response) => {
+    axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=${process.env.REACT_APP_API_KEY}`).then((response) => {
       // console.log(response) 
       this.setState({photos: response.data.photos})
     })
