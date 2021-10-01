@@ -6,7 +6,8 @@ import React from 'react';
 import { useState } from 'react';
 
 
-const api_key = "0eaoWv5ps3d3NN1uYKFwRkRqWVTTaRLwR4E7lD0n"
+const api_key = process.env.REACT_APP_NASA_API_KEY;
+// const api_key = 
 
 
 class App extends React.Component {
